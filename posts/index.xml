@@ -12,12 +12,14 @@
     
     
     <item>
-      <title>My First Post</title>
-      <link>https://bachdx2812.github.io/posts/my-first-post/</link>
+      <title>Image Fun &#39;project&#39;</title>
+      <link>https://bachdx2812.github.io/posts/image-fun/</link>
       <pubDate>Sat, 22 Sep 2018 15:53:47 +0900</pubDate>
       
-      <guid>https://bachdx2812.github.io/posts/my-first-post/</guid>
-      <description> This is my first ever post on my blog </description>
+      <guid>https://bachdx2812.github.io/posts/image-fun/</guid>
+      <description>This is my first ever post on my blog So I&amp;rsquo;ve been working on some of my pet projects for the last few days in my 3-holiday(三連休) which is deployed at ImageFun with VueJS
+Here come some screenshots
+HomePage Image filter The idea I have absolutely no idea about what I tried to build (lol) . Just fell so boring and wanna do some interesting stuff so I do this for fun actually.</description>
     </item>
     
   </channel>
