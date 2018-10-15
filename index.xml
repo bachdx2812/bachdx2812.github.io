@@ -6,10 +6,21 @@
     <description>Recent content on Bachdx&#39;s</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 22 Sep 2018 15:53:47 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 15 Oct 2018 21:05:00 +0900</lastBuildDate>
     
 	<atom:link href="https://bachdx2812.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The making of Todo App using Vuex</title>
+      <link>https://bachdx2812.github.io/posts/todo-vuex/</link>
+      <pubDate>Mon, 15 Oct 2018 21:05:00 +0900</pubDate>
+      
+      <guid>https://bachdx2812.github.io/posts/todo-vuex/</guid>
+      <description>Its has been a while since my first post I&amp;rsquo;ve to commit that Im kinda lazy lately
+Okay..Enough trash talk So I&amp;rsquo;ve bee working with VueJs for a while which is very cool. But the more I work with VueJs, the more I realize that I need a &amp;ldquo;state management system&amp;rdquo; cause everytime I break down the components and add actions into them&amp;hellip;It become really messy
+So I decided to learn VueX</description>
+    </item>
     
     <item>
       <title>Image Fun &#39;project&#39;</title>
