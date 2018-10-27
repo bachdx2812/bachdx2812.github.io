@@ -41,7 +41,7 @@ The making of Todo App using Vuex
 <div class="wrap">
 <div class="section" id="title">The making of Todo App using Vuex</div>
 
-<div class="section" id="content">Mon Oct 15, 2018 &#183; 419 words
+<div class="section" id="content">Mon Oct 15, 2018 &#183; 581 words
 
 <div class="tag-container"><span class="tag"><a href="https://bachdx2812.github.io/tags/petproject">petproject</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/programing">programing</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/js">js</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/vuejs">vuejs</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/vuex">vuex</a></span></div><hr/>
 
@@ -100,8 +100,14 @@ and then move all the code inside store inside it.</p>
 
 <p>Which looks like this:
 <img src="https://i.imgur.com/CixVely.png" alt="" />
-And the main component with <code>items</code> will looked like this
-<img src="https://i.imgur.com/k2BAWvk.png" alt="" /></p>
+And the main component with <code>items</code> will looked like this</p>
+
+<pre><code class="language-javascript">computed: {
+  items: function() {
+    return this.$store.state.todoItem.items;
+  }
+}
+</code></pre>
 
 <p>Let&rsquo;s check again to see if it still work!
 &hellip;
@@ -110,6 +116,42 @@ It&rsquo;s work perfectly the same way.OK for now.</p>
 <p>But the code is&hellip;smell.Why ? Because let think about when we need to deals with the <code>filter</code> datas, you have to deal with it like this all the time? I think I need to figure out the better way to do it.</p>
 
 <p>I&rsquo;ll comeback soon to deal with this.</p>
+
+<h3 id="vuex-getters">Vuex Getters</h3>
+
+<p><a href="https://vuex.vuejs.org/guide/getters.html">Vuex Getters</a></p>
+
+<p>Imagine when you have lots of components, and each one of them would use the filtered list of items.
+With the style I&rsquo;ve done, I have to repeat in every single components, which I dont really want to.
+So, How would I avoid this.</p>
+
+<p>The concept of <code>vuex getters</code> is created for exact same purpose</p>
+
+<pre><code>Vuex allows us to define &quot;getters&quot; in the store. You can think of them as computed properties for stores. Like computed properties, a getter's result is cached based on its dependencies, and will only re-evaluate when some of its dependencies have changed.
+</code></pre>
+
+<p>So I re-write my code base on this. How would it be?</p>
+
+<p>First, the todoItem.js. Add this getters block</p>
+
+<pre><code class="language-javascript">getters: {
+  itemList: state =&gt; {
+    return state.items;
+  }
+},
+</code></pre>
+
+<p>And then the usage</p>
+
+<pre><code class="language-javascript">computed: {
+  ...mapGetters({
+    // map `this.items` with `this.$store.state.getter.itemList`
+    items: 'itemList'
+  })
+}
+</code></pre>
+
+<p>Damn, this looks so much better, right?</p>
 </div>
 
 <div class="section bottom-menu"><hr/><p>
