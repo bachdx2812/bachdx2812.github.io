@@ -102,7 +102,7 @@ and then move all the code inside store inside it.</p>
 <img src="https://i.imgur.com/CixVely.png" alt="" />
 And the main component with <code>items</code> will looked like this</p>
 
-<pre><code class="language-javascript">computed: {
+<pre><code class="language-js">computed: {
   items: function() {
     return this.$store.state.todoItem.items;
   }
@@ -134,7 +134,7 @@ So, How would I avoid this.</p>
 
 <p>First, the todoItem.js. Add this getters block</p>
 
-<pre><code class="language-javascript">getters: {
+<pre><code class="language-js">getters: {
   itemList: state =&gt; {
     return state.items;
   }
@@ -143,7 +143,7 @@ So, How would I avoid this.</p>
 
 <p>And then the usage</p>
 
-<pre><code class="language-javascript">computed: {
+<pre><code class="language-js">computed: {
   ...mapGetters({
     // map `this.items` with `this.$store.state.getter.itemList`
     items: 'itemList'
