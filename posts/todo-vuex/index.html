@@ -41,7 +41,7 @@ The making of Todo App using Vuex
 <div class="wrap">
 <div class="section" id="title">The making of Todo App using Vuex</div>
 
-<div class="section" id="content">Mon Oct 15, 2018 &#183; 651 words
+<div class="section" id="content">Mon Oct 15, 2018 &#183; 620 words
 
 <div class="tag-container"><span class="tag"><a href="https://bachdx2812.github.io/tags/petproject">petproject</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/programing">programing</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/js">js</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/vuejs">vuejs</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/vuex">vuex</a></span></div><hr/>
 
@@ -100,14 +100,8 @@ and then move all the code inside store inside it.</p>
 
 <p>Which looks like this:
 <img src="https://i.imgur.com/CixVely.png" alt="" />
-And the main component with <code>items</code> will looked like this</p>
-
-<pre><code class="language-js">computed: {
-  items: function() {
-    return this.$store.state.todoItem.items;
-  }
-}
-</code></pre>
+And the main component with <code>items</code> will looked like this
+<img src="https://i.imgur.com/k2BAWvk.png" alt="" /></p>
 
 <p>Let&rsquo;s check again to see if it still work!
 &hellip;
@@ -132,24 +126,11 @@ So, How would I avoid this.</p>
 
 <p>So I re-write my code base on this. How would it be?</p>
 
-<p>First, the todoItem.js. Add this getters block</p>
+<p>First, the todoItem.js. Add this getters block
+<img src="https://i.imgur.com/bnEdoHv.png" alt="" /></p>
 
-<pre><code class="language-js">getters: {
-  itemList: state =&gt; {
-    return state.items;
-  }
-},
-</code></pre>
-
-<p>And then the usage</p>
-
-<pre><code class="language-js">computed: {
-  ...mapGetters({
-    // map `this.items` with `this.$store.state.getter.itemList`
-    items: 'itemList'
-  })
-}
-</code></pre>
+<p>And then the usage
+<img src="https://i.imgur.com/5vyd9mZ.png" alt="" /></p>
 
 <p>Damn, this looks so much better, right?
 And I think this is the right way to do it. Because till now this app using <code>static</code> data, but in real life, we need to get data from API right? So I think <code>getters</code> is the right place to do it.</p>
