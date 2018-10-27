@@ -41,7 +41,7 @@ The making of Todo App using Vuex
 <div class="wrap">
 <div class="section" id="title">The making of Todo App using Vuex</div>
 
-<div class="section" id="content">Mon Oct 15, 2018 &#183; 267 words
+<div class="section" id="content">Mon Oct 15, 2018 &#183; 419 words
 
 <div class="tag-container"><span class="tag"><a href="https://bachdx2812.github.io/tags/petproject">petproject</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/programing">programing</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/js">js</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/vuejs">vuejs</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/vuex">vuex</a></span></div><hr/>
 
@@ -86,9 +86,30 @@ So what im gonna do next is to make sure the <code>doom day</code> is not gonna 
 
 <p>Ref: <a href="http://chibinowa.net/note/vuejs/vue-14.html">http://chibinowa.net/note/vuejs/vue-14.html</a></p>
 
-<ul>
-<li>&hellip;(to be continued)</li>
-</ul>
+<h2 id="vuex-modules-2018-10-27">Vuex Modules (2018-10-27)</h2>
+
+<p>Luckily for me, Vuex actually has a nicely way to deal with my problem
+<a href="https://vuex.vuejs.org/guide/modules.html">Vuex Modules</a>
+So as the document said</p>
+
+<pre><code>To help with that, Vuex allows us to divide our store into modules. Each module can contain its own state, mutations, actions, getters, and even nested modules
+</code></pre>
+
+<p>So first thing I need to do is just split <code>todo-item</code> into <code>store/modules/todoItem.js</code>
+and then move all the code inside store inside it.</p>
+
+<p>Which looks like this:
+<img src="https://i.imgur.com/CixVely.png" alt="" />
+And the main component with <code>items</code> will looked like this
+<img src="https://i.imgur.com/k2BAWvk.png" alt="" /></p>
+
+<p>Let&rsquo;s check again to see if it still work!
+&hellip;
+It&rsquo;s work perfectly the same way.OK for now.</p>
+
+<p>But the code is&hellip;smell.Why ? Because let think about when we need to deals with the <code>filter</code> datas, you have to deal with it like this all the time? I think I need to figure out the better way to do it.</p>
+
+<p>I&rsquo;ll comeback soon to deal with this.</p>
 </div>
 
 <div class="section bottom-menu"><hr/><p>
