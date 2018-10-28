@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Bachdx&#39;s</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Oct 2018 21:05:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 27 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://bachdx2812.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,16 +14,25 @@
     <item>
       <title>Js</title>
       <link>https://bachdx2812.github.io/tags/js/</link>
-      <pubDate>Mon, 15 Oct 2018 21:05:00 +0900</pubDate>
+      <pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://bachdx2812.github.io/tags/js/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Nodejs</title>
+      <link>https://bachdx2812.github.io/tags/nodejs/</link>
+      <pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bachdx2812.github.io/tags/nodejs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Petproject</title>
       <link>https://bachdx2812.github.io/tags/petproject/</link>
-      <pubDate>Mon, 15 Oct 2018 21:05:00 +0900</pubDate>
+      <pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://bachdx2812.github.io/tags/petproject/</guid>
       <description></description>
@@ -32,7 +41,7 @@
     <item>
       <title>Programing</title>
       <link>https://bachdx2812.github.io/tags/programing/</link>
-      <pubDate>Mon, 15 Oct 2018 21:05:00 +0900</pubDate>
+      <pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://bachdx2812.github.io/tags/programing/</guid>
       <description></description>
@@ -41,7 +50,7 @@
     <item>
       <title>Vuejs</title>
       <link>https://bachdx2812.github.io/tags/vuejs/</link>
-      <pubDate>Mon, 15 Oct 2018 21:05:00 +0900</pubDate>
+      <pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://bachdx2812.github.io/tags/vuejs/</guid>
       <description></description>
@@ -50,7 +59,7 @@
     <item>
       <title>Vuex</title>
       <link>https://bachdx2812.github.io/tags/vuex/</link>
-      <pubDate>Mon, 15 Oct 2018 21:05:00 +0900</pubDate>
+      <pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://bachdx2812.github.io/tags/vuex/</guid>
       <description></description>
