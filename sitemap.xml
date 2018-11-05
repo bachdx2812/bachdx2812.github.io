@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://bachdx2812.github.io/posts/vue-fes/</loc>
+    <lastmod>2018-11-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://bachdx2812.github.io/posts/zalo-auto-chat/</loc>
     <lastmod>2018-10-27T00:00:00+00:00</lastmod>
   </url>
@@ -28,7 +33,7 @@
   
   <url>
     <loc>https://bachdx2812.github.io/</loc>
-    <lastmod>2018-10-27T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -38,8 +43,20 @@
   </url>
   
   <url>
+    <loc>https://bachdx2812.github.io/tags/event/</loc>
+    <lastmod>2018-11-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://bachdx2812.github.io/tags/js/</loc>
     <lastmod>2018-10-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://bachdx2812.github.io/tags/life/</loc>
+    <lastmod>2018-11-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -61,7 +78,7 @@
   
   <url>
     <loc>https://bachdx2812.github.io/posts/</loc>
-    <lastmod>2018-10-27T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -73,13 +90,13 @@
   
   <url>
     <loc>https://bachdx2812.github.io/tags/</loc>
-    <lastmod>2018-10-27T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://bachdx2812.github.io/tags/vuejs/</loc>
-    <lastmod>2018-10-27T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

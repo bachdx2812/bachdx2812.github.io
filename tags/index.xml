@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Bachdx&#39;s</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 05 Nov 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://bachdx2812.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Event</title>
+      <link>https://bachdx2812.github.io/tags/event/</link>
+      <pubDate>Mon, 05 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bachdx2812.github.io/tags/event/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Js</title>
@@ -17,6 +26,15 @@
       <pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://bachdx2812.github.io/tags/js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Life</title>
+      <link>https://bachdx2812.github.io/tags/life/</link>
+      <pubDate>Mon, 05 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bachdx2812.github.io/tags/life/</guid>
       <description></description>
     </item>
     
@@ -50,7 +68,7 @@
     <item>
       <title>Vuejs</title>
       <link>https://bachdx2812.github.io/tags/vuejs/</link>
-      <pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 05 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>https://bachdx2812.github.io/tags/vuejs/</guid>
       <description></description>

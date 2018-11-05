@@ -6,10 +6,20 @@
     <description>Recent content in Vuejs on Bachdx&#39;s</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 05 Nov 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://bachdx2812.github.io/tags/vuejs/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Japan Vue Festival 2018</title>
+      <link>https://bachdx2812.github.io/posts/vue-fes/</link>
+      <pubDate>Mon, 05 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bachdx2812.github.io/posts/vue-fes/</guid>
+      <description>It has been an honor and pleasure meeting and talking with Evan You - the creator of VueJS
+And I had a picture with him. Great Anyway, in Evan speach, he said that Vue 3.0 will be faster, smaller and easier to maitain. Really looking forward to it.</description>
+    </item>
     
     <item>
       <title>The making of My Personal Support Bot</title>
