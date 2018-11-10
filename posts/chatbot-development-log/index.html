@@ -1,0 +1,214 @@
+<!DOCTYPE html><html><head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<meta name="description" content="Call me Sam, a theme for Hugo.">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:domain" content="https://bachdx2812.github.io">
+
+<meta name="twitter:image" content="https://bachdx2812.github.io/tn.png">
+<meta name="twitter:title" property="og:title" itemprop="title name" content="Bachdx&#39;s">
+<meta name="twitter:description" property="og:description" itemprop="description" content="Call me Sam, a theme for Hugo.">
+<meta name="og:type" content="website">
+<meta name="og:url" content="https://bachdx2812.github.io">
+<meta name="og:image" itemprop="image primaryImageOfPage" content="https://bachdx2812.github.io/tn.png">
+
+<link rel="shortcut icon" href="https://bachdx2812.github.io/sam.ico" id="favicon">
+<link rel="stylesheet" href="https://bachdx2812.github.io/css/style.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+<title>
+
+Chatbot development log
+
+</title></head><body>
+<div class="wrap">
+<div class="section" id="title">Chatbot development log</div>
+
+<div class="section" id="content">Mon Nov 05, 2018 &#183; 605 words
+
+<div class="tag-container"><span class="tag"><a href="https://bachdx2812.github.io/tags/petproject">petproject</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/programing">programing</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/js">js</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/vuejs">vuejs</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/vuex">vuex</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/nodejs">nodejs</a></span></div><hr/>
+
+<p>This is actually gonna be the presentation of my 勉強会 for my colleagues
+Source code: <a href="https://github.com/bachdx2812/support-bot">https://github.com/bachdx2812/support-bot</a></p>
+
+<h1 id="the-goal">The Goal:</h1>
+
+<p>For very long time (still happen today), the <code>user</code> while surfing the internet sometime has to fill a lot of <code>form</code> with tons of information
+which kind of boring.
+For example: Name, address, birthday, gender, ..blah blah blah
+Which sucks</p>
+
+<p>So actually this bot wasnt my idea, you can see a lot of similar chatbot on the internet nowaday. I myself has an freelance job offer for doing this, so I did try to make it. Not really perfect but I think it can be used and can be able to create much more bigger things like just fill a form.</p>
+
+<p>But, lets just do it the simple way first.</p>
+
+<p>So, the goal is to make a bot, which act like human being to perform tasks like this:</p>
+
+<ol>
+<li>Say hello when user click on the <code>button</code> or <code>chat icon</code> or sth like that.</li>
+<li>Ask for name</li>
+
+<li><p>Ask for address ( Japan&rsquo;s address this time. )</p>
+
+<h5 id="todo-making-address-to-be-configurable-for-other-countries">TODO: making address to be configurable for other countries</h5></li>
+
+<li><p>Ask for gender</p></li>
+
+<li><p>Ask for something user want from website (infos, documents, ..) which normal form would present in checkboxs</p></li>
+
+<li><p>Ask for something user has to choose only 1 in multiple options which normal form would present in radio buttons</p></li>
+
+<li><p>Ask for something user need to fill in which normal form would present in input</p></li>
+
+<li><p>&hellip;(to be updated)</p></li>
+</ol>
+
+<h1 id="the-technique">The technique:</h1>
+
+<ol>
+<li>Server side: NodeJs with expressJs (this time) or RoR (my freelance job) or whatever you want</li>
+<li>Client side: VueJs (this time) or React or whatever you want</li>
+</ol>
+
+<h1 id="required">Required:</h1>
+
+<ol>
+<li>Nodejs (Lastest. I always do lastest)</li>
+<li>Yarn (I prefer yarn than npm)</li>
+<li><a href="https://cli.vuejs.org/">Vue Client</a></li>
+<li>MacOS(mine) or Linux&rsquo;s would be recommended</li>
+</ol>
+
+<h1 id="handon">HandOn</h1>
+
+<p>After install vue-client, if there wasnt any problems then you should be able to do this in command line</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vue create support-bot</code></pre></div>
+<p>And then</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd support-bot <span style="color:#f92672">&amp;&amp;</span> yarn serve</code></pre></div>
+<p>Check in browser <a href="http://localhost:8080/">http://localhost:8080/</a></p>
+
+<p>You would be able to see the default homepage like this:
+<img src="https://i.imgur.com/NTVI8XZ.png" alt="" /></p>
+
+<p>Of course we will not use this template , so I will delete them all</p>
+
+<p>The default template source code is in src/App.vue</p>
+
+<p>First thing first, I will make a wrap component for the bot. Let&rsquo;s just call it <code>Bot.vue</code>
+The Bot things would be in the bottom-right corner of the screen so let add some CSS</p>
+
+<p>(&hellip;After few moments&hellip;)
+After making up the css for a while. We will be able to see this simple chat like this:
+<img src="https://i.imgur.com/xWz8D0U.png" alt="" />
+And the source code will look like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">template</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fabs&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chat&#34;</span> <span style="color:#f92672">:</span><span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chatClass&#34;</span><span style="color:#f92672">&gt;</span>
+      <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chat_header&#34;</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chat_option&#34;</span><span style="color:#f92672">&gt;</span>
+          <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;header_img&#34;</span><span style="color:#f92672">&gt;</span>
+            <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://res.cloudinary.com/dqvwa7vpe/image/upload/v1496415051/avatar_ma6vug.jpg&#34;</span><span style="color:#f92672">&gt;</span>
+          <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
+          <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chat_head&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">Jane</span> <span style="color:#a6e22e">Doe</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/span&gt; &lt;br&gt; &lt;span class=&#34;agent&#34;&gt;Agent&lt;/span&gt; &lt;span class=&#34;online&#34;&gt;(Online)&lt;/span&gt;</span>
+        <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
+      <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
+      <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chat_converse&#34;</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chat_conversion chat_converse&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">span</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chat_msg_item chat_msg_item_admin&#34;</span><span style="color:#f92672">&gt;</span>
+          <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chat_avatar&#34;</span><span style="color:#f92672">&gt;</span>
+            <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://res.cloudinary.com/dqvwa7vpe/image/upload/v1496415051/avatar_ma6vug.jpg&#34;</span><span style="color:#f92672">&gt;</span>
+          <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
+          <span style="color:#a6e22e">Hey</span> <span style="color:#a6e22e">there</span><span style="color:#f92672">!</span> <span style="color:#a6e22e">Any</span> <span style="color:#a6e22e">question</span><span style="color:#f92672">?</span>
+        <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/span&gt;</span>
+        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">span</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chat_msg_item chat_msg_item_user&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">Hello</span><span style="color:#f92672">!&lt;</span><span style="color:#960050;background-color:#1e0010">/span&gt;</span>
+        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">span</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;status&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#ae81ff">20</span><span style="color:#a6e22e">m</span> <span style="color:#a6e22e">ago</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/span&gt;</span>
+        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">span</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chat_msg_item chat_msg_item_admin&#34;</span><span style="color:#f92672">&gt;</span>
+          <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chat_avatar&#34;</span><span style="color:#f92672">&gt;</span>
+            <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://res.cloudinary.com/dqvwa7vpe/image/upload/v1496415051/avatar_ma6vug.jpg&#34;</span><span style="color:#f92672">&gt;</span>
+          <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
+          <span style="color:#a6e22e">Hey</span><span style="color:#f92672">!</span> <span style="color:#a6e22e">Would</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">talk</span> <span style="color:#a6e22e">sales</span>, <span style="color:#a6e22e">support</span>, <span style="color:#a6e22e">or</span> <span style="color:#a6e22e">anyone</span><span style="color:#f92672">?</span>
+        <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/span&gt;</span>
+        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">span</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chat_msg_item chat_msg_item_user&#34;</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#a6e22e">Lorem</span> <span style="color:#a6e22e">Ipsum</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">simply</span> <span style="color:#a6e22e">dummy</span> <span style="color:#a6e22e">text</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">printing</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">typesetting</span> <span style="color:#a6e22e">industry</span>.<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/span&gt;</span>
+        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">span</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;status2&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">Just</span> <span style="color:#a6e22e">now</span>. <span style="color:#a6e22e">Not</span> <span style="color:#a6e22e">seen</span> <span style="color:#a6e22e">yet</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/span&gt;</span>
+      <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
+
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">a</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fab&#34;</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;toggleState&#34;</span><span style="color:#f92672">&gt;</span>
+      <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">i</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;prime zmdi&#34;</span> <span style="color:#f92672">:</span><span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fabClass&#34;</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/i&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/a&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/template&gt;</span>
+
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">STATE_INITIALIZE</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">STATE_ACTIVE</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+  <span style="color:#a6e22e">props</span><span style="color:#f92672">:</span> {
+  },
+  <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+    <span style="color:#66d9ef">return</span> {
+      <span style="color:#a6e22e">state</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">STATE_INITIALIZE</span>,
+      <span style="color:#a6e22e">fabClass</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;zmdi-comment-outline&#39;</span>,
+      <span style="color:#a6e22e">chatClass</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>
+    }
+  },
+  <span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">toggleState</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">isInitializeState</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">STATE_ACTIVE</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">STATE_INITIALIZE</span>;
+    }
+  },
+  <span style="color:#a6e22e">computed</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">isInitializeState</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(){
+      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">STATE_INITIALIZE</span>;
+    }
+  },
+  <span style="color:#a6e22e">watch</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">state</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">fabClass</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">isInitializeState</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;zmdi-comment-outline&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;zmdi-close is-active&#39;</span>;
+      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">chatClass</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">isInitializeState</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;is-visible&#39;</span>;
+    }
+  }
+}
+
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">style</span> <span style="color:#a6e22e">scoped</span><span style="color:#f92672">&gt;</span>
+<span style="color:#960050;background-color:#1e0010">@</span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;../assets/style/mainbot.css&#39;</span>;
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/style&gt;</span>
+</code></pre></div></div>
+
+<div class="section bottom-menu"><hr/><p>
+<a href="/posts">back</a>
+ &#183;
+
+
+
+<a href="/gallery">Photos</a>
+
+
+&#183; <a href="/posts">Stuff</a>
+&#183; <a href="/about">Bachdx Who?</a>
+
+&#183; <a href="https://bachdx2812.github.io"></a></p></div>
+
+<div class="section footer"></div>
+</div>
+</body></html>

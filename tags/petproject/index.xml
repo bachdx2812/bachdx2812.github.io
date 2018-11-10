@@ -6,10 +6,21 @@
     <description>Recent content in Petproject on Bachdx&#39;s</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 05 Nov 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://bachdx2812.github.io/tags/petproject/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Chatbot development log</title>
+      <link>https://bachdx2812.github.io/posts/chatbot-development-log/</link>
+      <pubDate>Mon, 05 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bachdx2812.github.io/posts/chatbot-development-log/</guid>
+      <description>This is actually gonna be the presentation of my 勉強会 for my colleagues Source code: https://github.com/bachdx2812/support-bot
+The Goal: For very long time (still happen today), the user while surfing the internet sometime has to fill a lot of form with tons of information which kind of boring. For example: Name, address, birthday, gender, ..blah blah blah Which sucks
+So actually this bot wasnt my idea, you can see a lot of similar chatbot on the internet nowaday.</description>
+    </item>
     
     <item>
       <title>The making of My Personal Support Bot</title>
