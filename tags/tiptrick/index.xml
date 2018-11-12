@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tiptrick on Bachdx&#39;s</title>
+    <link>https://bachdx2812.github.io/tags/tiptrick/</link>
+    <description>Recent content in Tiptrick on Bachdx&#39;s</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 12 Nov 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://bachdx2812.github.io/tags/tiptrick/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rails Tip &amp; Trick #1</title>
+      <link>https://bachdx2812.github.io/posts/rails-tricks/</link>
+      <pubDate>Mon, 12 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bachdx2812.github.io/posts/rails-tricks/</guid>
+      <description>ActiveRecord Query Reduce shipping_history.rb belongs_to :shipping scope :shipped, -&amp;gt; { where(new_value: &amp;#39;shipped&amp;#39;) } shipping.rb has_many :shipping_history def shipped_time return nil unless shipped? puts &amp;#34;shipped_time&amp;#34; shipping_histories.shipped.last.created_at end def shopify_update_available? return false unless shipped_time Time.current - shipped_time &amp;gt;= 1.hour endShipping.shipped.last.shopify_update_available? generated SQL:
+Shipping Load (16.7ms) SELECT `shippings`. * FROM `shippings` WHERE `shippings`.`shipping_status` = 40 ORDER BY `shippings`.`id` DESC LIMIT 1 ShippingHistory Load (16.2ms) SELECT `shipping_histories`. * FROM `shipping_histories` WHERE `shipping_histories`.`shipping_id` = 5847 AND `shipping_histories`.</description>
+    </item>
+    
+  </channel>
+</rss>

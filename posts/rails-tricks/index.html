@@ -1,0 +1,145 @@
+<!DOCTYPE html><html><head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<meta name="description" content="Call me Sam, a theme for Hugo.">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:domain" content="https://bachdx2812.github.io">
+
+<meta name="twitter:image" content="https://bachdx2812.github.io/tn.png">
+<meta name="twitter:title" property="og:title" itemprop="title name" content="Bachdx&#39;s">
+<meta name="twitter:description" property="og:description" itemprop="description" content="Call me Sam, a theme for Hugo.">
+<meta name="og:type" content="website">
+<meta name="og:url" content="https://bachdx2812.github.io">
+<meta name="og:image" itemprop="image primaryImageOfPage" content="https://bachdx2812.github.io/tn.png">
+
+<link rel="shortcut icon" href="https://bachdx2812.github.io/sam.ico" id="favicon">
+<link rel="stylesheet" href="https://bachdx2812.github.io/css/style.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+<title>
+
+Rails Tip &amp; Trick #1
+
+</title></head><body>
+<div class="wrap">
+<div class="section" id="title">Rails Tip &amp; Trick #1</div>
+
+<div class="section" id="content">Mon Nov 12, 2018 &#183; 200 words
+
+<div class="tag-container"><span class="tag"><a href="https://bachdx2812.github.io/tags/tiptrick">tip&amp;trick</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/experience">experience</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/programing">programing</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/rails">rails</a></span><span class="tag"><a href="https://bachdx2812.github.io/tags/ruby">ruby</a></span></div><hr/>
+
+<h1 id="activerecord-query-reduce">ActiveRecord Query Reduce</h1>
+
+<h4 id="shipping-history-rb">shipping_history.rb</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">belongs_to <span style="color:#e6db74">:shipping</span>
+scope <span style="color:#e6db74">:shipped</span>, <span style="color:#f92672">-&gt;</span> { where(<span style="color:#e6db74">new_value</span>: <span style="color:#e6db74">&#39;shipped&#39;</span>) }</code></pre></div>
+<h4 id="shipping-rb">shipping.rb</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">has_many <span style="color:#e6db74">:shipping_history</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">shipped_time</span>
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span> <span style="color:#66d9ef">unless</span> shipped?
+  puts <span style="color:#e6db74">&#34;shipped_time&#34;</span>
+  shipping_histories<span style="color:#f92672">.</span>shipped<span style="color:#f92672">.</span>last<span style="color:#f92672">.</span>created_at
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">shopify_update_available?</span>
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span> <span style="color:#66d9ef">unless</span> shipped_time
+  <span style="color:#66d9ef">Time</span><span style="color:#f92672">.</span>current <span style="color:#f92672">-</span> shipped_time <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">.</span>hour
+<span style="color:#66d9ef">end</span></code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Shipping.shipped.last.shopify_update_available?</code></pre></div>
+<p>generated SQL:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">  Shipping <span style="color:#66d9ef">Load</span> (<span style="color:#ae81ff">16</span>.<span style="color:#ae81ff">7</span>ms)
+	<span style="color:#66d9ef">SELECT</span>
+		<span style="color:#f92672">`</span>shippings<span style="color:#f92672">`</span>. <span style="color:#f92672">*</span>
+	<span style="color:#66d9ef">FROM</span>
+		<span style="color:#f92672">`</span>shippings<span style="color:#f92672">`</span>
+	<span style="color:#66d9ef">WHERE</span>
+		<span style="color:#f92672">`</span>shippings<span style="color:#f92672">`</span>.<span style="color:#f92672">`</span>shipping_status<span style="color:#f92672">`</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">40</span>
+	<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span>
+		<span style="color:#f92672">`</span>shippings<span style="color:#f92672">`</span>.<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> <span style="color:#66d9ef">DESC</span> <span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">1</span>
+
+  ShippingHistory <span style="color:#66d9ef">Load</span> (<span style="color:#ae81ff">16</span>.<span style="color:#ae81ff">2</span>ms)
+	<span style="color:#66d9ef">SELECT</span>
+		<span style="color:#f92672">`</span>shipping_histories<span style="color:#f92672">`</span>. <span style="color:#f92672">*</span>
+	<span style="color:#66d9ef">FROM</span>
+		<span style="color:#f92672">`</span>shipping_histories<span style="color:#f92672">`</span>
+	<span style="color:#66d9ef">WHERE</span>
+		<span style="color:#f92672">`</span>shipping_histories<span style="color:#f92672">`</span>.<span style="color:#f92672">`</span>shipping_id<span style="color:#f92672">`</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5847</span>
+		<span style="color:#66d9ef">AND</span> <span style="color:#f92672">`</span>shipping_histories<span style="color:#f92672">`</span>.<span style="color:#f92672">`</span>new_value<span style="color:#f92672">`</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;shipped&#39;</span>
+	<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span>
+		<span style="color:#f92672">`</span>shipping_histories<span style="color:#f92672">`</span>.<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> <span style="color:#66d9ef">DESC</span> <span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">1</span>
+  ShippingHistory <span style="color:#66d9ef">Load</span> (<span style="color:#ae81ff">12</span>.<span style="color:#ae81ff">5</span>ms)
+	<span style="color:#66d9ef">SELECT</span>
+		<span style="color:#f92672">`</span>shipping_histories<span style="color:#f92672">`</span>. <span style="color:#f92672">*</span>
+	<span style="color:#66d9ef">FROM</span>
+		<span style="color:#f92672">`</span>shipping_histories<span style="color:#f92672">`</span>
+	<span style="color:#66d9ef">WHERE</span>
+		<span style="color:#f92672">`</span>shipping_histories<span style="color:#f92672">`</span>.<span style="color:#f92672">`</span>shipping_id<span style="color:#f92672">`</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5847</span>
+		<span style="color:#66d9ef">AND</span> <span style="color:#f92672">`</span>shipping_histories<span style="color:#f92672">`</span>.<span style="color:#f92672">`</span>new_value<span style="color:#f92672">`</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;shipped&#39;</span>
+	<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span>
+		<span style="color:#f92672">`</span>shipping_histories<span style="color:#f92672">`</span>.<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> <span style="color:#66d9ef">DESC</span> <span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">1</span></code></pre></div>
+<p>After I changed <code>shipping.rb</code> to this</p>
+
+<h4 id="shipping-rb-1">shipping.rb</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">shopify_update_available?</span>
+  shipping_shipped_time <span style="color:#f92672">=</span> shipped_time
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span> <span style="color:#66d9ef">unless</span> shipping_shipped_time
+  <span style="color:#66d9ef">Time</span><span style="color:#f92672">.</span>current <span style="color:#f92672">-</span> shipping_shipped_time <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">.</span>hour
+<span style="color:#66d9ef">end</span></code></pre></div>
+<p>Then the SQL become this</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">  Shipping <span style="color:#66d9ef">Load</span> (<span style="color:#ae81ff">2</span>.<span style="color:#ae81ff">9</span>ms)
+	<span style="color:#66d9ef">SELECT</span>
+		<span style="color:#f92672">`</span>shippings<span style="color:#f92672">`</span>. <span style="color:#f92672">*</span>
+	<span style="color:#66d9ef">FROM</span>
+		<span style="color:#f92672">`</span>shippings<span style="color:#f92672">`</span>
+	<span style="color:#66d9ef">WHERE</span>
+		<span style="color:#f92672">`</span>shippings<span style="color:#f92672">`</span>.<span style="color:#f92672">`</span>shipping_status<span style="color:#f92672">`</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">40</span>
+	<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span>
+		<span style="color:#f92672">`</span>shippings<span style="color:#f92672">`</span>.<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> <span style="color:#66d9ef">DESC</span> <span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">1</span>
+shipped_time
+  ShippingHistory <span style="color:#66d9ef">Load</span> (<span style="color:#ae81ff">35</span>.<span style="color:#ae81ff">7</span>ms)
+	<span style="color:#66d9ef">SELECT</span>
+		<span style="color:#f92672">`</span>shipping_histories<span style="color:#f92672">`</span>. <span style="color:#f92672">*</span>
+	<span style="color:#66d9ef">FROM</span>
+		<span style="color:#f92672">`</span>shipping_histories<span style="color:#f92672">`</span>
+	<span style="color:#66d9ef">WHERE</span>
+		<span style="color:#f92672">`</span>shipping_histories<span style="color:#f92672">`</span>.<span style="color:#f92672">`</span>shipping_id<span style="color:#f92672">`</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5847</span>
+		<span style="color:#66d9ef">AND</span> <span style="color:#f92672">`</span>shipping_histories<span style="color:#f92672">`</span>.<span style="color:#f92672">`</span>new_value<span style="color:#f92672">`</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;shipped&#39;</span>
+	<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span>
+		<span style="color:#f92672">`</span>shipping_histories<span style="color:#f92672">`</span>.<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> <span style="color:#66d9ef">DESC</span> <span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">1</span></code></pre></div>
+<p>Imagine when you have to deal with 100, 1000 records at a time, each one generate 1 extra 1 sql then you will have 100, 1000 more. Sound fair enough?</p>
+</div>
+
+<div class="section bottom-menu"><hr/><p>
+<a href="/posts">back</a>
+ &#183;
+
+
+
+<a href="/gallery">Photos</a>
+
+
+&#183; <a href="/posts">Stuff</a>
+&#183; <a href="/about">Bachdx Who?</a>
+
+&#183; <a href="https://bachdx2812.github.io"></a></p></div>
+
+<div class="section footer"></div>
+</div>
+</body></html>
