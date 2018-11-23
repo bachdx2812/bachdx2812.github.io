@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://bachdx2812.github.io/blogs/nguoi-lon-co-don/</loc>
+    <lastmod>2018-11-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://bachdx2812.github.io/posts/rails-tricks/</loc>
     <lastmod>2018-11-12T00:00:00+00:00</lastmod>
   </url>
@@ -43,7 +48,19 @@
   
   <url>
     <loc>https://bachdx2812.github.io/</loc>
-    <lastmod>2018-11-12T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://bachdx2812.github.io/tags/blog/</loc>
+    <lastmod>2018-11-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://bachdx2812.github.io/blogs/</loc>
+    <lastmod>2018-11-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -118,7 +135,7 @@
   
   <url>
     <loc>https://bachdx2812.github.io/tags/</loc>
-    <lastmod>2018-11-05T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
