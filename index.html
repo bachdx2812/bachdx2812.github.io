@@ -1,31 +1,349 @@
-<!DOCTYPE html><html><head>
-	<meta name="generator" content="Hugo 0.48" /><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>bachdx — indie macOS apps &amp; developer tools</title>
+<meta name="description" content="Small, sharp native macOS apps and developer tools by bachdx. Built with Tauri, Rust and React. Install via Homebrew." />
+<meta name="author" content="bachdx" />
+<link rel="canonical" href="https://bachdx2812.github.io/" />
 
-<meta name="description" content="Call me Sam, a theme for Hugo.">
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="bachdx — indie macOS apps &amp; developer tools" />
+<meta property="og:description" content="Small, sharp native macOS apps and developer tools. Built with Tauri, Rust and React. Install via Homebrew." />
+<meta property="og:url" content="https://bachdx2812.github.io/" />
+<meta name="theme-color" content="#f3eee4" />
 
-<meta name="twitter:card" content="summary">
-<meta name="twitter:domain" content="https://bachdx2812.github.io">
+<!-- Favicon: ink monogram on paper -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a1714'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' font-weight='700' fill='%23d8492b' text-anchor='middle'%3Eb%3C/text%3E%3C/svg%3E" />
 
-<meta name="twitter:image" content="https://bachdx2812.github.io/tn.png">
-<meta name="twitter:title" property="og:title" itemprop="title name" content="Bachdx&#39;s">
-<meta name="twitter:description" property="og:description" itemprop="description" content="Call me Sam, a theme for Hugo.">
-<meta name="og:type" content="website">
-<meta name="og:url" content="https://bachdx2812.github.io">
-<meta name="og:image" itemprop="image primaryImageOfPage" content="https://bachdx2812.github.io/tn.png">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 
-<link rel="shortcut icon" href="https://bachdx2812.github.io/sam.ico" id="favicon">
-<link rel="stylesheet" href="https://bachdx2812.github.io/css/style.css">
+<style>
+  :root{
+    --paper:#f3eee4;          /* warm paper base */
+    --paper-2:#ece4d4;        /* deeper paper */
+    --card:#fbf8f1;           /* card surface */
+    --ink:#1a1714;            /* near-black warm ink */
+    --ink-2:#4a4138;          /* muted ink */
+    --ink-3:#7c7264;          /* faint ink */
+    --line:rgba(26,23,20,.14);
+    --line-2:rgba(26,23,20,.08);
+    --accent:#d8492b;         /* vermilion */
+    --accent-deep:#a52e18;
+    --shadow:0 1px 0 rgba(26,23,20,.04), 0 18px 40px -28px rgba(26,23,20,.45);
+    --shadow-hover:0 2px 0 rgba(26,23,20,.05), 0 34px 60px -30px rgba(26,23,20,.55);
+    --r:18px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Be Vietnam Pro",system-ui,sans-serif;
+    font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
+  }
+  body::before{ /* warmth glows */
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(120% 80% at 80% -12%, rgba(216,73,43,.11), transparent 55%),
+      radial-gradient(90% 70% at -5% 0%, rgba(47,126,122,.07), transparent 50%);
+  }
+  body::after{ /* paper grain */
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 28px}
+  a{color:inherit;text-decoration:none}
+  section[id]{scroll-margin-top:80px}
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+  /* ---------- top bar ---------- */
+  .topbar{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.4) blur(8px);
+    background:linear-gradient(var(--paper),rgba(243,238,228,.72));border-bottom:1px solid var(--line-2)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:600;letter-spacing:-.01em}
+  .brand .mono{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--ink-3);font-weight:500}
+  .sigil{width:30px;height:30px;border-radius:9px;background:var(--ink);color:var(--accent);
+    display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:900;font-size:19px;line-height:1}
+  .topbar nav{display:flex;gap:22px;font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--ink-2)}
+  .topbar nav a{position:relative;padding:4px 0}
+  .topbar nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-1px;height:1.5px;background:var(--accent);transition:right .28s ease}
+  .topbar nav a:hover::after{right:0}
+  .topbar nav a.gh{color:var(--ink)}
+  @media(max-width:640px){.topbar nav a:not(.gh){display:none}}
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
+  /* ---------- hero ---------- */
+  .hero{padding:74px 0 30px}
+  .hero-grid{display:grid;grid-template-columns:1.55fr .95fr;gap:48px;align-items:end}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent-deep);display:flex;align-items:center;gap:12px;margin-bottom:22px}
+  .eyebrow::before{content:"";width:34px;height:1.5px;background:var(--accent)}
+  h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(2.7rem,7.2vw,5.1rem);
+    line-height:.96;letter-spacing:-.025em;margin:0 0 24px;color:var(--ink);font-optical-sizing:auto}
+  h1 em{font-style:italic;font-weight:500;color:var(--accent)}
+  h1 .nb{white-space:nowrap}
+  .lede{font-size:1.18rem;color:var(--ink-2);max-width:34ch;margin:0}
+  .hero-aside{padding-bottom:8px;border-left:1px solid var(--line);padding-left:26px}
+  .hero-aside p{margin:0 0 18px;color:var(--ink-2);font-size:.99rem}
+  .hero-aside code{font-family:"JetBrains Mono",monospace;font-size:.86em;background:var(--paper-2);padding:1px 5px;border-radius:5px}
+  .hero-stats{display:flex;gap:26px;font-family:"JetBrains Mono",monospace;margin-top:6px}
+  .hero-stats div{display:flex;flex-direction:column}
+  .hero-stats b{font-family:"Fraunces",serif;font-size:1.9rem;font-weight:700;line-height:1;color:var(--ink)}
+  .hero-stats span{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-top:6px}
+  @media(max-width:860px){
+    .hero{padding:48px 0 18px}
+    .hero-grid{grid-template-columns:1fr;gap:34px;align-items:start}
+    .hero-aside{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:24px}
+  }
 
-<title>Bachdx&#39;s</title></head><body><div class="section" id="splash">
-<div class="big-link"><a href="/gallery">Photos</a></div><div class="big-link"><a href="/posts">Coding</a></div><div class="big-link"><a href="/blogs">Blog</a></div><div class="big-link"><a href="/about">Bachdx Who?</a></div>
-</div></body></html>
+  /* ---------- section heading ---------- */
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+    margin:64px 0 26px;padding-top:30px;border-top:1px solid var(--line)}
+  .sec-head h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.7rem;letter-spacing:-.01em;margin:0}
+  .sec-head .count{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--ink-3);letter-spacing:.02em}
+  @media(max-width:560px){.sec-head .count{display:none}}
+
+  /* ---------- cards ---------- */
+  .grid{display:grid;gap:20px}
+  .apps,.tools{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:760px){.apps,.tools{grid-template-columns:1fr}}
+
+  .card{position:relative;display:flex;flex-direction:column;background:var(--card);
+    border:1px solid var(--line);border-radius:var(--r);padding:26px 26px 22px;box-shadow:var(--shadow);
+    transition:transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s, border-color .4s;overflow:hidden}
+  .card::before{content:"";position:absolute;top:0;left:0;height:3px;width:0;background:var(--ac,var(--accent));
+    transition:width .5s cubic-bezier(.2,.7,.2,1)}
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);border-color:rgba(26,23,20,.22)}
+  .card:hover::before{width:100%}
+  .card-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:18px}
+  .tile{flex:none;width:58px;height:58px;border-radius:15px;display:grid;place-items:center;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.35), 0 8px 18px -8px var(--ac)}
+  .tile svg{width:32px;height:32px;display:block}
+  .titles{min-width:0;flex:1}
+  .titles h3{font-family:"Fraunces",serif;font-weight:600;font-size:1.42rem;letter-spacing:-.01em;margin:2px 0 4px}
+  .titles .platform{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--ink-3);letter-spacing:.03em}
+  .ver{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink-2);
+    border:1px solid var(--line);border-radius:999px;padding:3px 9px;white-space:nowrap}
+  .desc{color:var(--ink-2);font-size:1rem;margin:0 0 18px;flex:1}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+  .tag{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink-2);
+    background:var(--paper-2);border-radius:6px;padding:4px 8px;letter-spacing:.02em}
+
+  .actions{display:flex;align-items:center;gap:10px;margin-top:auto;flex-wrap:wrap}
+  .brew{flex:1;min-width:0;display:flex;align-items:center;gap:10px;cursor:pointer;
+    font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--ink);
+    background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:9px 11px;
+    transition:border-color .25s,background .25s}
+  .brew:hover{border-color:var(--ac);background:#fff}
+  .brew code{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;text-align:left}
+  .brew .ico{flex:none;color:var(--ink-3);transition:color .2s}
+  .brew:hover .ico{color:var(--ac)}
+  .brew.copied{border-color:var(--ac);color:var(--ac)}
+  .brew.copied .ico{color:var(--ac)}
+  .ghbtn{flex:none;display:inline-flex;align-items:center;gap:7px;font-family:"Be Vietnam Pro",sans-serif;
+    font-weight:600;font-size:.92rem;padding:9px 15px;border-radius:10px;background:var(--ink);color:var(--paper);
+    transition:transform .25s, background .25s}
+  .ghbtn:hover{transform:translateX(2px);background:#2a241e}
+  .ghbtn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .ghbtn.ghost:hover{background:var(--paper);border-color:var(--ac);color:var(--ac)}
+  .ghbtn svg{width:15px;height:15px}
+  .linkrow{display:flex;gap:10px;margin-top:auto}
+  .linkrow .ghbtn{flex:1;justify-content:center}
+
+  /* whole-card link, inner controls above */
+  .stretch{position:absolute;inset:0;z-index:1}
+  .card-head,.desc,.tags,.actions,.linkrow{position:relative;z-index:2}
+
+  /* ---------- footer ---------- */
+  footer{margin-top:78px;padding:34px 0 60px;border-top:1px solid var(--line)}
+  .foot{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+    font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--ink-3)}
+  .foot a{color:var(--ink-2)}
+  .foot a:hover{color:var(--accent)}
+  .foot .dot{color:var(--line)}
+
+  /* ---------- entrance ---------- */
+  @media(prefers-reduced-motion:no-preference){
+    .reveal{opacity:0;transform:translateY(18px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+    @keyframes rise{to{opacity:1;transform:none}}
+  }
+  .toast{position:fixed;left:50%;bottom:26px;z-index:99;background:var(--ink);color:var(--paper);
+    font-family:"JetBrains Mono",monospace;font-size:12.5px;padding:10px 16px;border-radius:10px;
+    opacity:0;pointer-events:none;transition:opacity .3s, transform .3s;
+    transform:translateX(-50%) translateY(20px);max-width:92vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- ============ top bar ============ -->
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <span class="sigil">b</span>
+      <span>bachdx<span class="mono">&nbsp;/ workshop</span></span>
+    </a>
+    <nav>
+      <a href="#apps">Apps</a>
+      <a href="#tools">Open&nbsp;source</a>
+      <a class="gh" href="https://github.com/bachdx2812" target="_blank" rel="noopener">GitHub&nbsp;↗</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ hero ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal" style="animation-delay:.05s">
+      <div class="eyebrow">Indie software · macOS</div>
+      <h1>Small, sharp<br/>apps I <em>ship</em>.</h1>
+      <p class="lede">Native macOS utilities and developer tools — fast, focused, no fluff. Each one ships via Homebrew.</p>
+    </div>
+    <aside class="hero-aside reveal" style="animation-delay:.18s">
+      <p>I’m Bach. I make tiny menu-bar apps in <strong>Tauri&nbsp;+&nbsp;Rust&nbsp;+&nbsp;React</strong>, plus a couple of things to help engineers learn. Pick one below and <code>brew install</code> it.</p>
+      <div class="hero-stats">
+        <div><b>4</b><span>macOS apps</span></div>
+        <div><b>2</b><span>dev tools</span></div>
+        <div><b>1</b><span>brew tap</span></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ macOS apps ============ -->
+<section id="apps" class="wrap">
+  <div class="sec-head reveal">
+    <h2>macOS apps</h2>
+    <span class="count">brew install --cask bachdx2812/tap/&lt;app&gt;</span>
+  </div>
+  <div class="grid apps" id="apps-grid"></div>
+</section>
+
+<!-- ============ open source ============ -->
+<section id="tools" class="wrap">
+  <div class="sec-head reveal">
+    <h2>Open source &amp; learning</h2>
+    <span class="count">free · on GitHub</span>
+  </div>
+  <div class="grid tools" id="tools-grid"></div>
+</section>
+
+<!-- ============ footer ============ -->
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 bachdx — built with Tauri, Rust &amp; React.</span>
+    <span>
+      <a href="https://github.com/bachdx2812" target="_blank" rel="noopener">github.com/bachdx2812</a>
+      <span class="dot"> · </span>
+      <a href="https://github.com/bachdx2812/homebrew-tap" target="_blank" rel="noopener">homebrew-tap</a>
+    </span>
+  </div>
+</footer>
+
+<div class="toast" id="toast">copied to clipboard</div>
+
+<script>
+const GH = "https://github.com/bachdx2812/";
+const apps = [
+  { key:"appglance", name:"AppGlance", repo:"app-consuming-monitor", version:"v0.1.0",
+    cask:"appglance", ac:"#b5611c", grad:"linear-gradient(150deg,#e8943a,#b5611c)",
+    platform:"macOS 13+ · menu app",
+    desc:"App-centric activity monitor. Groups every helper process under the app you actually launched — one clean row per app.",
+    tags:["Tauri","Rust","React"],
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="#fbf3e6" stroke-width="2" stroke-linecap="round"><path d="M4 20V13"/><path d="M9 20V8"/><path d="M14 20V11"/><path d="M19 20V5"/></svg>` },
+  { key:"quickmemo", name:"QuickMemo", repo:"quick-note", version:"v1.1.1",
+    cask:"quickmemo", ac:"#a52e18", grad:"linear-gradient(150deg,#e3573a,#a52e18)",
+    platform:"macOS 11+ · menu app",
+    desc:"Menu-bar note capture that floats over full-screen apps. Hit ⌘⇧M, type, ↵ to save. Grouped by day, local SQLite.",
+    tags:["Tauri","Rust","NSPanel"],
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="#fdeeea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11l3 3v13H5z"/><path d="M8 9h7M8 13h7M8 17h4"/></svg>` },
+  { key:"translate-on-air", name:"Translate On Air", repo:"translation-on-air", version:"v0.1.2",
+    cask:"translation-on-air", ac:"#1c514e", grad:"linear-gradient(150deg,#2f7e7a,#1c514e)",
+    platform:"macOS · menu app",
+    desc:"Select text in any app, press a hotkey, get an instant translation — Japanese renders with furigana over the kanji.",
+    tags:["Tauri","Rust","OpenAI / Claude"],
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="#e7f3f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h7M7.5 6v2c0 2.5-1.5 4.5-3.5 5.5"/><path d="M6 10c.8 2 2.5 3.3 4 4"/><path d="M13 20l3.4-9 3.4 9M14.3 17h4.2"/></svg>` },
+  { key:"speakmate", name:"SpeakMate", repo:"speakmate", version:"v0.2.0",
+    cask:"speakmate", ac:"#383895", grad:"linear-gradient(150deg,#5a5bc4,#383895)",
+    platform:"Apple Silicon · macOS 11+",
+    desc:"Practice spoken English & Japanese. AI gives you a line, a native voice reads it, you read back — and get per-word pronunciation scoring.",
+    tags:["Tauri","Azure Speech","Claude"],
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="#eeeefb" stroke-width="2" stroke-linecap="round"><path d="M12 4v16M8 8v8M16 8v8M4 11v2M20 11v2"/></svg>` }
+];
+const tools = [
+  { key:"sda", name:"System Design Advisor", repo:"system-design-advisor",
+    ac:"#2a3645", grad:"linear-gradient(150deg,#46566b,#2a3645)",
+    platform:"Claude Code · Cursor",
+    desc:"AI coding-assistant skills for system design. Drop-in expertise that reasons about scale, trade-offs and architecture as you build.",
+    tags:["Skills","AI","Markdown"],
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="#eaeef3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="18" r="2.4"/><path d="M12 7.4v4.6M12 12l-5 4M12 12l5 4"/></svg>` },
+  { key:"handbook", name:"The Engineer's Handbook", repo:"dev-learning-hub",
+    live:"https://bachdx-learning-hub.vercel.app/",
+    ac:"#5e5e22", grad:"linear-gradient(150deg,#9a9a3a,#5e5e22)",
+    platform:"VitePress · open source",
+    desc:"System design, design patterns & more — master engineering one concept at a time. 25 chapters, 200+ diagrams, interview prep.",
+    tags:["VitePress","25 chapters","200+ diagrams"],
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="#f3f3e3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v15H5.5C4.7 19 4 18.3 4 17.5z"/><path d="M20 5.5C20 4.7 19.3 4 18.5 4H13v15h5.5c.8 0 1.5-.7 1.5-1.5z"/><path d="M12 4v15"/></svg>` }
+];
+
+const ghMark = `<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>`;
+const copyIco = `<svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>`;
+const extIco = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>`;
+
+function appCard(a,i){
+  const cmd = `brew install --cask bachdx2812/tap/${a.cask}`;
+  return `<article class="card reveal" style="--ac:${a.ac};animation-delay:${(0.1+i*0.07).toFixed(2)}s">
+    <a class="stretch" href="${GH}${a.repo}" target="_blank" rel="noopener" aria-label="${a.name} on GitHub"></a>
+    <div class="card-head">
+      <div class="tile" style="background:${a.grad}">${a.icon}</div>
+      <div class="titles"><h3>${a.name}</h3><div class="platform">${a.platform}</div></div>
+      <span class="ver">${a.version}</span>
+    </div>
+    <p class="desc">${a.desc}</p>
+    <div class="tags">${a.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div>
+    <div class="actions">
+      <button class="brew" data-cmd="${cmd}" type="button" title="Click to copy">${copyIco}<code>${cmd}</code></button>
+      <a class="ghbtn" href="${GH}${a.repo}" target="_blank" rel="noopener">${ghMark}<span>GitHub</span></a>
+    </div>
+  </article>`;
+}
+function toolCard(t,i){
+  const live = t.live ? `<a class="ghbtn" href="${t.live}" target="_blank" rel="noopener">${extIco}<span>Live</span></a>` : "";
+  return `<article class="card reveal" style="--ac:${t.ac};animation-delay:${(0.1+i*0.08).toFixed(2)}s">
+    <a class="stretch" href="${GH}${t.repo}" target="_blank" rel="noopener" aria-label="${t.name} on GitHub"></a>
+    <div class="card-head">
+      <div class="tile" style="background:${t.grad}">${t.icon}</div>
+      <div class="titles"><h3>${t.name}</h3><div class="platform">${t.platform}</div></div>
+    </div>
+    <p class="desc">${t.desc}</p>
+    <div class="tags">${t.tags.map(x=>`<span class="tag">${x}</span>`).join("")}</div>
+    <div class="linkrow">
+      <a class="ghbtn ghost" href="${GH}${t.repo}" target="_blank" rel="noopener">${ghMark}<span>Repository</span></a>
+      ${live}
+    </div>
+  </article>`;
+}
+document.getElementById("apps-grid").innerHTML  = apps.map(appCard).join("");
+document.getElementById("tools-grid").innerHTML = tools.map(toolCard).join("");
+
+const toast = document.getElementById("toast");
+let toastT;
+document.querySelectorAll(".brew").forEach(btn=>{
+  btn.addEventListener("click", async (e)=>{
+    e.preventDefault(); e.stopPropagation();
+    const cmd = btn.dataset.cmd;
+    try{ await navigator.clipboard.writeText(cmd); }
+    catch{ const ta=document.createElement("textarea"); ta.value=cmd; document.body.appendChild(ta); ta.select(); try{document.execCommand("copy");}catch(_){} ta.remove(); }
+    btn.classList.add("copied");
+    toast.textContent = "copied  ·  "+cmd;
+    toast.classList.add("show");
+    clearTimeout(toastT);
+    toastT=setTimeout(()=>{ toast.classList.remove("show"); btn.classList.remove("copied"); }, 1900);
+  });
+});
+</script>
+</body>
+</html>
