@@ -1,0 +1,78 @@
+/* base.css — shared foundation for the whole site (homepage + lessons).
+   Design tokens, reset, paper background, top bar, footer, eyebrow, tag pills, reveal.
+   Page-specific stylesheets (home.css, lessons/assets/lessons.css) layer on top. */
+:root{
+  --paper:#f3eee4;          /* warm paper base */
+  --paper-2:#ece4d4;        /* deeper paper */
+  --card:#fbf8f1;           /* card surface */
+  --ink:#1a1714;            /* near-black warm ink */
+  --ink-2:#4a4138;          /* muted ink */
+  --ink-3:#7c7264;          /* faint ink */
+  --line:rgba(26,23,20,.14);
+  --line-2:rgba(26,23,20,.08);
+  --accent:#d8492b;         /* vermilion */
+  --accent-deep:#a52e18;
+  --shadow:0 1px 0 rgba(26,23,20,.04), 0 18px 40px -28px rgba(26,23,20,.45);
+  --shadow-hover:0 2px 0 rgba(26,23,20,.05), 0 34px 60px -30px rgba(26,23,20,.55);
+  --r:18px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Be Vietnam Pro",system-ui,sans-serif;
+  font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
+}
+body::before{ /* warmth glows */
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(120% 80% at 80% -12%, rgba(216,73,43,.11), transparent 55%),
+    radial-gradient(90% 70% at -5% 0%, rgba(47,126,122,.07), transparent 50%);
+}
+body::after{ /* paper grain */
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+}
+.wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 28px}
+a{color:inherit;text-decoration:none}
+section[id]{scroll-margin-top:80px}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.4) blur(8px);
+  background:linear-gradient(var(--paper),rgba(243,238,228,.72));border-bottom:1px solid var(--line-2)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:600;letter-spacing:-.01em}
+.brand .mono{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--ink-3);font-weight:500}
+.sigil{width:30px;height:30px;border-radius:9px;background:var(--ink);color:var(--accent);
+  display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:900;font-size:19px;line-height:1}
+.topbar nav{display:flex;gap:22px;font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--ink-2)}
+.topbar nav a{position:relative;padding:4px 0}
+.topbar nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-1px;height:1.5px;background:var(--accent);transition:right .28s ease}
+.topbar nav a:hover::after{right:0}
+.topbar nav a.gh{color:var(--ink)}
+@media(max-width:640px){.topbar nav a:not(.gh){display:none}}
+
+/* ---------- eyebrow (section kicker) ---------- */
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent-deep);display:flex;align-items:center;gap:12px;margin-bottom:22px;flex-wrap:wrap}
+.eyebrow::before{content:"";width:34px;height:1.5px;background:var(--accent)}
+
+/* ---------- tag pills (shared) ---------- */
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tag{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink-2);
+  background:var(--paper-2);border-radius:6px;padding:4px 8px;letter-spacing:.02em}
+
+/* ---------- footer ---------- */
+footer{margin-top:78px;padding:34px 0 60px;border-top:1px solid var(--line)}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--ink-3)}
+.foot a{color:var(--ink-2)}
+.foot a:hover{color:var(--accent)}
+.foot .dot{color:var(--line)}
+
+/* ---------- entrance animation ---------- */
+@media(prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(18px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+}

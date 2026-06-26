@@ -1,0 +1,87 @@
+/* home.css — homepage-only layout: hero, section headings, app/tool cards, toast.
+   Loads after base.css. */
+
+/* ---------- hero ---------- */
+.hero{padding:74px 0 30px}
+.hero-grid{display:grid;grid-template-columns:1.55fr .95fr;gap:48px;align-items:end}
+.hero .eyebrow{margin-bottom:22px}
+h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(2.7rem,7.2vw,5.1rem);
+  line-height:.96;letter-spacing:-.025em;margin:0 0 24px;color:var(--ink);font-optical-sizing:auto}
+h1 em{font-style:italic;font-weight:500;color:var(--accent)}
+h1 .nb{white-space:nowrap}
+.lede{font-size:1.18rem;color:var(--ink-2);max-width:34ch;margin:0}
+.hero-aside{padding-bottom:8px;border-left:1px solid var(--line);padding-left:26px}
+.hero-aside p{margin:0 0 18px;color:var(--ink-2);font-size:.99rem}
+.hero-aside code{font-family:"JetBrains Mono",monospace;font-size:.86em;background:var(--paper-2);padding:1px 5px;border-radius:5px}
+.hero-stats{display:flex;gap:26px;font-family:"JetBrains Mono",monospace;margin-top:6px}
+.hero-stats div{display:flex;flex-direction:column}
+.hero-stats b{font-family:"Fraunces",serif;font-size:1.9rem;font-weight:700;line-height:1;color:var(--ink)}
+.hero-stats span{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-top:6px}
+@media(max-width:860px){
+  .hero{padding:48px 0 18px}
+  .hero-grid{grid-template-columns:1fr;gap:34px;align-items:start}
+  .hero-aside{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:24px}
+}
+
+/* ---------- section heading ---------- */
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  margin:64px 0 26px;padding-top:30px;border-top:1px solid var(--line)}
+.sec-head h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.7rem;letter-spacing:-.01em;margin:0}
+.sec-head .count{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--ink-3);letter-spacing:.02em}
+@media(max-width:560px){.sec-head .count{display:none}}
+
+/* ---------- cards ---------- */
+.grid{display:grid;gap:20px}
+.apps,.tools{grid-template-columns:repeat(2,1fr)}
+@media(max-width:760px){.apps,.tools{grid-template-columns:1fr}}
+
+.card{position:relative;display:flex;flex-direction:column;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--r);padding:26px 26px 22px;box-shadow:var(--shadow);
+  transition:transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s, border-color .4s;overflow:hidden}
+.card::before{content:"";position:absolute;top:0;left:0;height:3px;width:0;background:var(--ac,var(--accent));
+  transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);border-color:rgba(26,23,20,.22)}
+.card:hover::before{width:100%}
+.card-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:18px}
+.tile{flex:none;width:58px;height:58px;border-radius:15px;display:grid;place-items:center;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), 0 8px 18px -8px var(--ac)}
+.tile svg{width:32px;height:32px;display:block}
+.titles{min-width:0;flex:1}
+.titles h3{font-family:"Fraunces",serif;font-weight:600;font-size:1.42rem;letter-spacing:-.01em;margin:2px 0 4px}
+.titles .platform{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--ink-3);letter-spacing:.03em}
+.ver{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink-2);
+  border:1px solid var(--line);border-radius:999px;padding:3px 9px;white-space:nowrap}
+.desc{color:var(--ink-2);font-size:1rem;margin:0 0 18px;flex:1}
+.card .tags{margin-bottom:18px}
+
+.actions{display:flex;align-items:center;gap:10px;margin-top:auto;flex-wrap:wrap}
+.brew{flex:1;min-width:0;display:flex;align-items:center;gap:10px;cursor:pointer;
+  font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--ink);
+  background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:9px 11px;
+  transition:border-color .25s,background .25s}
+.brew:hover{border-color:var(--ac);background:#fff}
+.brew code{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;text-align:left}
+.brew .ico{flex:none;color:var(--ink-3);transition:color .2s}
+.brew:hover .ico{color:var(--ac)}
+.brew.copied{border-color:var(--ac);color:var(--ac)}
+.brew.copied .ico{color:var(--ac)}
+.ghbtn{flex:none;display:inline-flex;align-items:center;gap:7px;font-family:"Be Vietnam Pro",sans-serif;
+  font-weight:600;font-size:.92rem;padding:9px 15px;border-radius:10px;background:var(--ink);color:var(--paper);
+  transition:transform .25s, background .25s}
+.ghbtn:hover{transform:translateX(2px);background:#2a241e}
+.ghbtn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.ghbtn.ghost:hover{background:var(--paper);border-color:var(--ac);color:var(--ac)}
+.ghbtn svg{width:15px;height:15px}
+.linkrow{display:flex;gap:10px;margin-top:auto}
+.linkrow .ghbtn{flex:1;justify-content:center}
+
+/* whole-card link, inner controls above */
+.stretch{position:absolute;inset:0;z-index:1}
+.card-head,.desc,.tags,.actions,.linkrow{position:relative;z-index:2}
+
+/* ---------- copy toast ---------- */
+.toast{position:fixed;left:50%;bottom:26px;z-index:99;background:var(--ink);color:var(--paper);
+  font-family:"JetBrains Mono",monospace;font-size:12.5px;padding:10px 16px;border-radius:10px;
+  opacity:0;pointer-events:none;transition:opacity .3s, transform .3s;
+  transform:translateX(-50%) translateY(20px);max-width:92vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
